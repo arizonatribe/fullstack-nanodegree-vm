@@ -1,17 +1,18 @@
 -- Table definitions for the tournament project.
+DROP DATABASE IF EXISTS swiss_tournament;
 
 CREATE DATABASE swiss_tournament;
 \c swiss_tournament;
 
 CREATE TABLE tournaments (
-  id SERIAL PRIMARY KEY NOT NULL,
+  id SERIAL PRIMARY KEY,
   tournament_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   is_won BOOLEAN NOT NULL DEFAULT FALSE,
   is_closed BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE players (
-  id SERIAL PRIMARY KEY NOT NULL,
+  id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   tournament_id INTEGER REFERENCES tournaments(id) ON DELETE CASCADE NOT NULL
 );

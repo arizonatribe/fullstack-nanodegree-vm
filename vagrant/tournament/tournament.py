@@ -4,7 +4,6 @@
 #
 
 import psycopg2
-import bleach
 
 # Basic Operational methods and convenience wrappers to cut down on unnecessary repetition in the code
 def connect():
@@ -79,7 +78,7 @@ def registerPlayer(name):
         tournament_id = __get_current_tournament()
 
     # Register this new player to the current tournament
-    __commit_and_close("INSERT INTO players (name, tournament_id) VALUES (%s, %s)", (bleach.clean(name), tournament_id))
+    __commit_and_close("INSERT INTO players (name, tournament_id) VALUES (%s, %s)", (name, tournament_id))
 
 def playerStandings():
     """Returns a list of the players and their win records, sorted by wins.

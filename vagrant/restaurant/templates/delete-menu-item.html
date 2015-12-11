@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Delete Menu Item</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='site.css')}}">
+</head>
+<body>
+    <header><h1> Delete {{ item.name }} for {{ restaurant.name }} ? </h1></header>
+    <div class='content'>
+        <form method='POST' enctype='multipart/form-data' action="{{ url_for('deleteMenuItem', restaurant_id=restaurant.id, menu_id=item.id)}}">
+            <input type="hidden" name="nonce" value="{{NONCE}}" />
+            <div id="cancel-save">
+                <a class="back-button" href="{{url_for('showMenu', restaurant_id=restaurant.id)}}">Cancel</a>
+                <input type='submit' value='Yes'>
+            </div>
+      </form>
+    </div>
+    <footer>
+        <a href="{{url_for('showRestaurants')}}">Home</a> |
+        <a href="{{url_for('showMenu', restaurant_id=restaurant.id)}}">{{restaurant.name}}</a> |
+        {% if auth %}
+        <a href="{{url_for('gdisconnect')}}">Logoff</a>
+        {% else %}
+        <a href="{{url_for('showLogin')}}">Login</a>
+        {% endif %}
+    </footer>
+</body>
+</html>

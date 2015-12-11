@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Restaurants</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='site.css')}}">
+    <link href="{{ url_for('showRestaurantsAtom') }}" rel="alternate" title="Restaurants" type="application/atom+xml">
+</head>
+<body>
+    <header><h1> Restaurants </h1></header>
+    <div class='content'>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul id="flash-messages" class="flash-messages">
+                {% for message in messages %}
+                    <li class="flash-message">{{message}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        <a class='create-new' href="{{url_for('newRestaurant')}}">Create a New Restaurant</a>
+        <ul>
+            {% for r in restaurants %}
+            <li class='restaurant'>
+                <a class="item-name" href="{{url_for('showMenu', restaurant_id = r.id )}}">{{r.name}}</a>
+                <a class="back-button" href="{{url_for('editRestaurant', restaurant_id = r.id)}}">Edit</a>
+                <a class="back-button" href="{{url_for('deleteRestaurant', restaurant_id = r.id)}}">Delete</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <footer>
+        {% if auth == True %}
+        <a href="{{url_for('gdisconnect')}}">Logoff</a>
+        {% else %}
+        <a href="{{url_for('showLogin')}}">Login</a>
+        {% endif %}
+    </footer>
+    <script type="text/javascript" src="{{url_for('static', filename='jquery-2.1.4.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='bundle.js')}}"></script>
+</body>
+</html>

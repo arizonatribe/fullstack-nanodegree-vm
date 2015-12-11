@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Edit Menu Item</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='site.css')}}">
+</head>
+<body>
+    <header><h1> Edit {{ item.name }} for {{ restaurant.name }} </h1></header>
+    <div class='content'>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul id="flash-messages" class="flash-messages">
+                {% for message in messages %}
+                    <li class="flash-message">{{message}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        <form method='POST' enctype='multipart/form-data' action="{{ url_for('editMenuItem', restaurant_id=restaurant.id, menu_id=item.id)}}">
+            <div id="name-price">
+                <input id="name" name='name' size="50" type='text' placeholder="{{item.name}}" value="{{item.name}}">
+                <input id="price" name='price' type='text' placeholder="{{item.price}}" value="{{item.price}}">
+            </div>
+            <textarea id="description" name='description' cols="50" rows="5" placeholder="{{item.description}}" >{{item.description}}</textarea>
+            <div id="course-file">
+                <div class="menu-course">
+                    <p>Course</p>
+                    <input type="radio" name="course" value="Appetizer">Appetizer<br>
+                    <input type="radio" name="course" value="Entree">Entree<br>
+                    <input type="radio" name="course" value="Dessert">Dessert<br>
+                    <input type="radio" name="course" value="Beverage">Beverage<br>
+                </div>
+                <div class="file-uploader">
+                    <input id="hidden-pic" name="picture" value="{{item.picture}}" type="hidden">
+                    <input id="upload-file" name="file" type="file">
+                    <button type="button" class="back-button" id="feaux-uploader">Upload Image</button>
+                    <div id="image-placeholder">
+                        {% if item.picture %}
+                        <img id="item-picture" class="item-picture" src="data:image/png;base64, {{item.picture}}" />
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div id="cancel-save">
+                <a class="back-button" href="{{url_for('showMenu', restaurant_id=restaurant.id)}}">Cancel</a>
+                <input type='submit' value='Save'>
+            </div>
+      </form>
+    </div>
+    {% if creator.picture %}
+    <div class="user-stamp">
+        <img width="70" height="70" src="{{creator.picture}}" >
+        <p class="creator-name"><small>created by {{creator.name}}</small></p>
+    </div>
+    {% endif %}
+    <footer>
+        <a href="{{url_for('showRestaurants')}}">Home</a> |
+        <a href="{{url_for('showMenu', restaurant_id=restaurant.id)}}">{{restaurant.name}}</a> |
+        {% if auth %}
+        <a href="{{url_for('gdisconnect')}}">Logoff</a>
+        {% else %}
+        <a href="{{url_for('showLogin')}}">Login</a>
+        {% endif %}
+    </footer>
+    <script type="text/javascript" src="{{url_for('static', filename='jquery-2.1.4.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='bundle.js')}}"></script>
+</body>
+</html>

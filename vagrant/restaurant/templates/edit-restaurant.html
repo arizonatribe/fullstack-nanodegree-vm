@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Edit Restaurant</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='site.css')}}">
+</head>
+<body>
+    <header><h1> Edit {{ restaurant.name }} </h1></header>
+    <div class='content'>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul id="flash-messages" class="flash-messages">
+                {% for message in messages %}
+                    <li class="flash-message">{{message}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        <form method='POST' enctype='multipart/form-data' action="{{ url_for('editRestaurant', restaurant_id=restaurant.id)}}">
+            <input id="name" name='name' type='text' placeholder="{{restaurant.name}}" value="{{restaurant.name}}">
+            <div id="cancel-save">
+                <a class="back-button" href="{{url_for('showRestaurants')}}">Cancel</a>
+                <input type='submit' value='Save'>
+            </div>
+      </form>
+    </div>
+    {% if creator.picture %}
+    <div class="user-stamp">
+        <img width="70" height="70" src="{{creator.picture}}" >
+        <p class="creator-name"><small>created by {{creator.name}}</small></p>
+    </div>
+    {% endif %}
+    <footer>
+        <a href="{{url_for('showRestaurants')}}">Home</a> |
+        {% if auth %}
+        <a href="{{url_for('gdisconnect')}}">Logoff</a>
+        {% else %}
+        <a href="{{url_for('showLogin')}}">Login</a>
+        {% endif %}
+    </footer>
+</body>
+</html>

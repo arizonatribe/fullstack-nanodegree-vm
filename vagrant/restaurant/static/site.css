@@ -1,0 +1,210 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+.content {
+    display: block;
+    padding: 2em;
+    text-align: center;
+    margin-bottom: 3em;
+}
+h1, h2, h3, h4 {
+    color: #666;
+    font-family: 'Arial Black', Helvetica, sans-serif;
+}
+header {
+    margin: 0 auto;
+    text-align: center;
+    background-color: #999999;
+    height: 70px;
+}
+header h1 {
+    color: #e2e2e2;
+    display: block;
+    font-size: 36px;
+    padding-top: 20px;
+}
+.restaurant, .menu {
+    font-size: 14px;
+    transition: all ease 0.2s;
+    text-align: center;
+    opacity: 0.9;
+    max-width: 400px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style: none;
+    padding: 1em;
+    border-radius: 4px;
+    border: 1px solid #666;
+    margin-top: 0.3em;
+    color: #333;
+    background-color: #b3b3b3;
+}
+.restaurant:hover, .menu:hover {
+    background-color: #e2e2e2;
+}
+ul {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    padding: 0;
+    max-width: 400px;
+}
+.menu-course {
+    vertical-align: top;
+    display: inline-block;
+    text-align: left;
+    max-width: 150px;
+    min-width: 100px;
+    margin: 0 auto;
+    padding: 0.5em;
+    border: 1px solid #666;
+    border-radius: 4px;
+}
+.menu-course input[type=radio] {
+    outline: none;
+}
+#name {
+    display: inline-block;
+    max-width: 327px;
+}
+#price {
+    margin-left: 7px;
+    vertical-align: top;
+    display: inline-block;
+    max-width: 80px;
+    text-align: right;
+}
+#course-file, #name-price {
+    margin-top: 10px;
+    display: block;
+}
+.menu-course p {
+    display: block;
+    margin-bottom: 3px;
+    margin-top: 2px;
+    font-size: 110%;
+    font-weight: bold;
+}
+.course {
+    font-style: italic;
+    font-size: 96%;
+}
+.price::after {
+    content: ' . . . . . . '
+}
+.menu span, .restaurant .item-name {
+    display: block;
+    font-size: 24px;
+    margin: 0.5em auto;
+    color: #333;
+    text-decoration: none;
+}
+input[type=text] {
+    padding: 0.3em;
+}
+input[type=text], textarea {
+    margin: 2px auto;
+    border-radius: 4px;
+    color: #999;
+    background-color: #ffffff;
+    border: 1px solid #666;
+    outline: none;
+    display: block;
+}
+.file-uploader {
+    margin: 0 auto;
+    max-width: 150px;
+    min-width: 100px;
+    vertical-align: top;
+    display: inline-block;
+}
+img {
+    margin: 10px auto;
+    text-align: center;
+    display: block;
+}
+.file-uploader input[type=file] {
+    height: 0;
+    overflow: hidden;
+}
+.item-picture {
+    max-width: 60px;
+}
+.create-new, .back-button, input[type=submit] {
+    padding: 0.3em;
+    transition: all ease 0.1s;
+    margin: 0.2em;
+    border-radius: 4px;
+    display: inline-block;
+    color: #f2f2f2;
+    background-color: #999;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.create-new:hover, .back-button:hover, input[type=submit]:hover {
+    background-color: #b30000;
+}
+.create-new {
+    margin-bottom: 2em;
+    font-size: 18px;
+}
+.flash-messages {
+    background-color: #86b3a1;
+    border: 1px solid #15b3a2;
+    border-radius: 6px;
+    margin: 0 auto 1em auto;
+    display: block;
+}
+.flash-message {
+    padding: 1em;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all ease 0.2s;
+}
+#cancel-save {
+    display: block;
+    margin-top: 3em;
+}
+.user-stamp {
+    display: block;
+    position: fixed;
+    left: 10px;
+    bottom: 30px;
+    margin: 0 auto;
+    padding: 0.3em;
+    max-width: 150px;
+}
+.user-stamp img {
+    border-radius: 50%;
+}
+.creator-name {
+    color: #b3b3b3
+}
+footer {
+    display: block;
+    margin: 0 auto;
+    min-width: 100%;
+    position: fixed;
+    overflow-x: hidden;
+    bottom: 0;
+    text-align: center;
+    background-color: #cacaca;
+    height: 30px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+footer a {
+    color: #333;
+    text-decoration: none;
+    font-size: 90%;
+}
+footer a:hover, .restaurant .item-name:hover {
+    text-decoration: underline;
+}
